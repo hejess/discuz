@@ -11,6 +11,15 @@ if(version_compare(PHP_VERSION, '9.0.0', '>=')) {
 	exit('This version of Discuz! is not compatible with >= PHP 9.0, Please install or update to higher version.');
 }
 
+session_start();
+
+// Check if the user is age-verified
+if (!isset($_SESSION['age_verified']) || $_SESSION['age_verified'] !== true) {
+    header('Location: age_verification.php');  // Redirect to the age verification page
+    exit();
+}
+
+
 if(!empty($_SERVER['QUERY_STRING']) && is_numeric($_SERVER['QUERY_STRING'])) {
 	$_ENV['curapp'] = 'home';
 	$_GET = array('mod'=>'space', 'uid'=>$_SERVER['QUERY_STRING']);
