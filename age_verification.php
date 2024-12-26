@@ -3,7 +3,7 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['age_verified']) && $_POST['age_verified'] == 'yes') {
         $_SESSION['age_verified'] = true;
-        header('Location: index.php');  // Redirect back to the main page after verification
+        header('Location: forum.php');  // Redirect back to the main page after verification
         exit();
     } else {
         // Redirect to another page if the user is underage
@@ -14,18 +14,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Age Verification</title>
+    <title>年龄验证</title>
 </head>
 <body>
-    <h1>Age Verification</h1>
-    <p>Are you 18 years or older?</p>
+    <h1>年龄验证</h1>
+    <p>您即将进入的网页内容包含成人内容，您必须已满18岁</p>
     <form method="post">
-        <button type="submit" name="age_verified" value="yes">Yes, I am 18 or older</button>
-        <button type="submit" name="age_verified" value="no">No, I am under 18</button>
+        <button type="submit" name="age_verified" value="yes">是的，我已满18岁</button>
+        <button type="submit" name="age_verified" value="no">不，我未满18岁</button>
     </form>
 </body>
 </html>
